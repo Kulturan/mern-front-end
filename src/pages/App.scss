@@ -1,0 +1,26 @@
+/*
+ * Defining Variable
+ */
+$color-primary: #55a826;
+$color-primary-light: lighten($color-primary, 5%);
+$color-primary-dark: darken($color-primary, 5%);
+$color-light: #fcfcfc;
+$color-shadow: #f3f3f3;
+$color-border: #bfbfbf;
+
+/*
+ * Overwrite Default Style
+ */
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: $color-shadow;
+}
+
+img {
+  display: block;
+}
