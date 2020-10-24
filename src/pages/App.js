@@ -1,7 +1,6 @@
 import React from 'react';
 import {Routes} from '../config'
-import './App.css';
-import Navbar from './component/Navbar';
+import './App.scss';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
@@ -22,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Navbar />
         <Routes />
       </ThemeProvider>
     </div>

@@ -17,23 +17,8 @@ import PlaceIcon from '@material-ui/icons/Place';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import CustomizedInputBase from './component/Searchbar';
-import ImageGridList from './component/ImageGridList';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="/">
-        Trind
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import CustomizedInputBase from '../component/Searchbar';
+import ImageGridList from '../component/ImageGridList';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -64,30 +49,9 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
-    padding: theme.spacing(6),
-  },
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const footers = [
-    {
-      title: 'Company',
-      description: ['Team', 'History', 'Contact us', 'Locations'],
-    },
-    {
-      title: 'Features',
-      description: ['Cool stuff', 'Random feature', 'Team feature', 'Developer stuff', 'Another one'],
-    },
-    {
-      title: 'Resources',
-      description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    },
-    {
-      title: 'Legal',
-      description: ['Privacy policy', 'Terms of use'],
-    },
-];
 
 export default function Home() {
   const classes = useStyles();
@@ -160,31 +124,6 @@ export default function Home() {
             <ImageGridList /> 
           </Container>
         </main>
-        {/* Footer */}
-        <Container maxWidth="md" component="footer" className={classes.footer}>
-          <Grid container spacing={4} justify="space-evenly">
-            {footers.map((footer) => (
-              <Grid item xs={6} sm={3} key={footer.title}>
-                <Typography variant="h6" color="textPrimary" gutterBottom>
-                  {footer.title}
-                </Typography>
-                <ul>
-                  {footer.description.map((item) => (
-                    <li key={item}>
-                      <Link href="#" variant="subtitle1" color="textSecondary">
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Grid>
-            ))}
-          </Grid>
-          <Box mt={5}>
-            <Copyright />
-          </Box>
-        </Container>
-        {/* End footer */}
     </React.Fragment>
   );
 }
