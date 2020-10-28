@@ -1,4 +1,4 @@
 import Home from './Home';
-import DetailCity from './DetailCity';
+import Register from './Register';
 
-export {Home, DetailCity};
+export { Home, Register };
