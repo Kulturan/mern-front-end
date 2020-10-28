@@ -1,6 +1,6 @@
 import Footer from './Footer';
-import Navbar from './Navbar';
+import ResponsiveDrawer from './ResponsiveDrawer';
 import Searchbar from './Searchbar';
 import ImageGridList from './ImageGridList';
 
-export { Footer, Navbar, Searchbar, ImageGridList };
+export { Footer, ResponsiveDrawer, Searchbar, ImageGridList };

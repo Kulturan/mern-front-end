@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
@@ -61,38 +60,24 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth='sm'>
-            <Typography
-              component='h1'
-              variant='h2'
-              align='center'
-              color='textPrimary'
-              gutterBottom
-            >
+          <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Trind
             </Typography>
-            <Typography
-              variant='h5'
-              align='center'
-              color='textSecondary'
-              paragraph
-            >
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Cari wisata menarik yang ada di sekitarmu!
             </Typography>
             <CustomizedInputBase />
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
+              <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant='contained' color='primary'>
+                  <Button variant="contained" color="primary">
                     kunjungi
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant='outlined' color='primary'>
+                  <Button variant="outlined" color="primary">
                     lihat selengkapnya
                   </Button>
                 </Grid>
@@ -101,37 +86,32 @@ export default function Home() {
           </Container>
         </div>
         {/* End hero unit */}
-        <Container className={classes.cardGrid} maxWidth='md'>
+        <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image='https://source.unsplash.com/random'
-                    title='Image title'
+                    image="https://source.unsplash.com/random"
+                    title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant='h5' component='h2'>
+                    <Typography gutterBottom variant="h5" component="h2">
                       Warung J-One
                     </Typography>
-                    <Typography
-                      gutterBottom
-                      fontSize='small'
-                      variant='subtitle'
-                    >
-                      <PlaceIcon fontSize='inherit' />
-                      Perumdos ITS, Blok J No.1, Keputih Kota Surabaya, Jawa
-                      Timur
+                    <Typography gutterBottom fontSize="small" variant="subtitle">
+                      <PlaceIcon fontSize="inherit" />
+                      Perumdos ITS, Blok J No.1, Keputih Kota Surabaya, Jawa Timur
                     </Typography>
                   </CardContent>
-                  <Divider orientation='horizontal' />
+                  <Divider orientation="horizontal" />
                   <CardActions>
-                    <IconButton aria-label='tambahkan ke favorit'>
-                      <FavoriteIcon fontSize='small' />
+                    <IconButton aria-label="tambahkan ke favorit">
+                      <FavoriteIcon fontSize="small" />
                     </IconButton>
-                    <IconButton aria-label='bagikan'>
-                      <ShareIcon fontSize='small' />
+                    <IconButton aria-label="bagikan">
+                      <ShareIcon fontSize="small" />
                     </IconButton>
                   </CardActions>
                 </Card>
@@ -139,10 +119,9 @@ export default function Home() {
             ))}
           </Grid>
         </Container>
-        <Container maxWidth='md'>
-          <ImageGridList />
+        <Container maxWidth="md">
+          <ImageGridList /> 
         </Container>
-      </main>
     </React.Fragment>
   );
 }
