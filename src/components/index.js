@@ -1,6 +1,6 @@
 import Footer from './Footer';
 import ResponsiveDrawer from './ResponsiveDrawer';
 import Searchbar from './Searchbar';
-import ImageGridList from './ImageGridList';
+import CarouselBanner from './CarouselBanner';
 
-export { Footer, ResponsiveDrawer, Searchbar, ImageGridList };
+export { Footer, ResponsiveDrawer, Searchbar, CarouselBanner };

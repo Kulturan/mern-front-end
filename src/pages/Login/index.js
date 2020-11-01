@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Bookings() {
+export default function Login() {
   return (
     <React.Fragment>
-      <h1>Bookings</h1>
+      <h1>Login</h1>
     </React.Fragment>
   );
 }

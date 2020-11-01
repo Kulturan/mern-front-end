@@ -1,45 +1,29 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Home, Register, Bookings } from '../pages';
-import { ResponsiveDrawer, Footer } from '../components';
+import AuthRoutes from './AuthRoutes';
+import MainRoutes from './MainRoutes';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-  },
-}));
+const AuthRoute = {
+  key: 'auth',
+  path: ['/login', '/register'],
+};
+const MainRoute = {
+  key: 'main',
+  path: ['/', '/pesanan', '/favorit', '/pentasku', '/akun', '/pengaturan'],
+};
 
 const Routes = () => {
-  const classes = useStyles();
-
   return (
     <Router>
-      <CssBaseline />
       <Switch>
-        <Route path='/register'>
-          <Register />
+        <Route exact path={AuthRoute.path} key={AuthRoute.key}>
+          <AuthRoutes />
         </Route>
-        <Route path='/pesanan'>
-          <ResponsiveDrawer />
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <Bookings />
-            <Footer />
-          </main>
-        </Route>
-        <Route path='/'>
-          <ResponsiveDrawer />
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <Home />
-            <Footer />
-          </main>
+      </Switch>
+      <Switch>
+        <Route exact path={MainRoute.path} key={MainRoute.key}>
+          <MainRoutes />
         </Route>
       </Switch>
     </Router>
