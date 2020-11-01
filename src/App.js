@@ -4,28 +4,54 @@ import Routes from './routes';
 
 import './App.scss';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
 
 const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+    },
+  },
   palette: {
+    type: 'dark',
     primary: {
-      main: green[700],
+      main: '#222b31',
       contrastText: '#fff',
     },
     secondary: {
-      main: purple[500],
+      main: '#ff3465',
+      contrastText: '#fff',
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto',
+    h1: {
+      fontWeight: 700,
+    },
+    h2: {
+      fontWeight: 700,
+      color: '#fff',
+    },
+    h3: {
+      fontWeight: 700,
+      color: '#fff',
+    },
+    caption: {
+      color: '#fff',
     },
   },
 });
 
 function App() {
   return (
-    <div className='App'>
+    <React.Fragment>
       <ThemeProvider theme={theme}>
         <Routes />
       </ThemeProvider>
-    </div>
+    </React.Fragment>
   );
 }
 
