@@ -30,6 +30,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link as LinkRouter } from 'react-router-dom';
 
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const drawerWidth = 200;
 const navMenus = [
@@ -173,6 +174,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const ElevationScroll = (props) => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
+  const styleTheme = useTheme();
+  return React.cloneElement(props.children, {
+    style: {
+      backgroundColor: trigger
+        ? styleTheme.palette.background.default
+        : 'transparent',
+    },
+  });
+};
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -321,69 +338,74 @@ function ResponsiveDrawer(props) {
 
   return (
     <React.Fragment>
-      <AppBar position='fixed' className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant='h6' noWrap>
-            Sendria
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+      <ElevationScroll {...props}>
+        <AppBar position='fixed' className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography className={classes.title} variant='h6' noWrap>
+              Sendria
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder='Search…'
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder='Search…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label='show 4 new mails' color='inherit'>
-              <Badge badgeContent={4} color='secondary'>
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label='show 17 new notifications' color='inherit'>
-              <Badge badgeContent={17} color='secondary'>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              onClick={handleProfileMenuOpen}
-              color='inherit'
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label='show more'
-              aria-controls={mobileMenuId}
-              aria-haspopup='true'
-              onClick={handleMobileMenuOpen}
-              color='inherit'
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label='show 4 new mails' color='inherit'>
+                <Badge badgeContent={4} color='secondary'>
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                aria-label='show 17 new notifications'
+                color='inherit'
+              >
+                <Badge badgeContent={17} color='secondary'>
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge='end'
+                aria-label='account of current user'
+                aria-controls={menuId}
+                aria-haspopup='true'
+                onClick={handleProfileMenuOpen}
+                color='inherit'
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label='show more'
+                aria-controls={mobileMenuId}
+                aria-haspopup='true'
+                onClick={handleMobileMenuOpen}
+                color='inherit'
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
       {renderMobileMenu}
       {renderMenu}
       <nav className={classes.drawer} aria-label='navigation menus'>

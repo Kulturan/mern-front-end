@@ -14,11 +14,11 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   Banner: {
-    height: '400px',
+    height: theme.spacing(50),
     position: 'relative',
 
-    Media: {
-      backgroundColor: 'white',
+    '& $Media': {
+      backgroundColor: theme.palette.common.white,
       height: '100%',
       overflow: 'hidden',
       position: 'relative',
@@ -28,17 +28,16 @@ const useStyles = makeStyles((theme) => ({
         filter: 'brightness(115%)',
       },
 
-      MediaCaption: {
+      '& $MediaCaption': {
         textOverflow: 'ellipsis',
         position: 'absolute',
         bottom: '0',
-        padding: '15px',
-        backgroundColor: 'black',
-        color: 'white',
+        padding: theme.spacing(2),
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
         opacity: '0.6',
         width: '100%',
-        height: '10%',
-        fontWeight: '200',
+        fontWeight: theme.typography.fontWeightLight,
         transition: '300ms',
         cursor: 'pointer',
         '&:hover': {
@@ -47,46 +46,63 @@ const useStyles = makeStyles((theme) => ({
       },
     },
 
-    BannerGrid: {
+    '& $BannerGrid': {
       height: '100%',
     },
 
-    Content: {
-      color: 'white',
-      backgroundColor: 'red',
+    '& $Content': {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.main,
       height: '100%',
       cursor: 'pointer',
-      padding: '30px',
-      transition: '300ms',
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(4),
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+      transition: theme.transitions.duration.standard + 'ms',
       '&:hover, &:active': {
-        backgroundColor: 'red',
+        backgroundColor: theme.palette.primary.main,
 
-        ViewButton: {
-          backgroundColor: 'white',
-          color: 'red',
+        '& $ViewButton': {
+          backgroundColor: theme.palette.common.white,
+          color: theme.palette.primary.main,
         },
       },
 
-      Title: {
-        fontSize: '16px',
-        fontWeight: '500',
+      '& $Title': {
+        wordBreak: 'break-all',
+        fontWeight: theme.typography.fontWeightRegular,
+        display: '-webkit-box',
+        '-webkit-line-clamp': '2',
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden',
       },
 
-      Caption: {
-        marginTop: '10px',
-        fontSize: '16px',
+      '& $Caption': {
+        marginTop: theme.spacing(1.5),
+        display: '-webkit-box',
+        '-webkit-line-clamp': '4',
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden',
       },
 
-      ViewButton: {
-        marginTop: '40px',
-        color: 'white',
-        fontSize: '16px',
+      '& $ViewButton': {
+        marginTop: theme.spacing(5),
+        color: theme.palette.common.white,
+        fontSize: theme.typography.fontSize,
         border: '3px solid white',
         textTransform: 'capitalize',
-        transition: '200ms',
+        transition: theme.transitions.duration.shorter + 'ms',
       },
     },
   },
+  Media: {},
+  MediaCaption: {},
+  BannerGrid: {},
+  Content: {},
+  ViewButton: {},
+  Title: {},
+  Caption: {},
 }));
 
 function Banner(props) {
@@ -102,16 +118,16 @@ function Banner(props) {
   let items = [];
   const content = (
     <Grid item xs={12 / totalItems} key='content'>
-      <CardContent className={classes.Banner.Content}>
-        <Typography className={classes.Banner.Title}>
+      <CardContent className={classes.Content}>
+        <Typography variant='h4' className={classes.Title}>
           {props.item.Name}
         </Typography>
 
-        <Typography className={classes.Banner.Caption}>
+        <Typography className={classes.Caption}>
           {props.item.Caption}
         </Typography>
 
-        <Button variant='outlined' className={classes.Banner.ViewButton}>
+        <Button variant='outlined' className={classes.ViewButton}>
           View Now
         </Button>
       </CardContent>
@@ -124,13 +140,11 @@ function Banner(props) {
     const media = (
       <Grid item xs={12 / totalItems} key={item.Name}>
         <CardMedia
-          className={classes.Banner.Media}
+          className={classes.Media}
           image={item.Image}
           title={item.Name}
         >
-          <Typography className={classes.Banner.Media.MediaCaption}>
-            {item.Name}
-          </Typography>
+          <Typography className={classes.MediaCaption}>{item.Name}</Typography>
         </CardMedia>
       </Grid>
     );
@@ -148,7 +162,7 @@ function Banner(props) {
 
   return (
     <Card raised className={classes.Banner}>
-      <Grid container spacing={0} className={classes.Banner.BannerGrid}>
+      <Grid container spacing={0} className={classes.BannerGrid}>
         {items}
       </Grid>
     </Card>
@@ -157,32 +171,36 @@ function Banner(props) {
 
 const items = [
   {
-    Name: 'Electronics',
-    Caption: 'Electrify your friends!',
+    Name: 'Bali Kulturalis',
+    Caption: 'Nikmati pertunjukan penuh dengan khazanah budaya berkesan!',
     contentPosition: 'left',
     Items: [
       {
-        Name: 'Macbook Pro',
-        Image: 'https://source.unsplash.com/featured/?macbook',
+        Name: 'Tari Barong',
+        Image:
+          'https://images.unsplash.com/photo-1565970141926-c001afaf8577?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
       },
       {
-        Name: 'iPhone',
-        Image: 'https://source.unsplash.com/featured/?iphone',
+        Name: 'Tari Kecak',
+        Image:
+          'https://images.unsplash.com/photo-1511164657592-59a452023479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
       },
     ],
   },
   {
-    Name: 'Home Appliances',
-    Caption: 'Say no to manual home labour!',
+    Name: 'Pesona Jawa',
+    Caption: 'Jelajahi pesona dari jawa dengan pertunjukan menakjubkan!',
     contentPosition: 'middle',
     Items: [
       {
-        Name: 'Washing Machine WX9102',
-        Image: 'https://source.unsplash.com/featured/?washingmachine',
+        Name: 'Tari Topeng',
+        Image:
+          'https://images.unsplash.com/photo-1508684602137-2fe4e5539fa3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1037&q=80',
       },
       {
-        Name: 'Learus Vacuum Cleaner',
-        Image: 'https://source.unsplash.com/featured/?vacuum,cleaner',
+        Name: 'Tari Srigati',
+        Image:
+          'https://images.unsplash.com/photo-1599551634107-95ce4e763232?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
       },
     ],
   },
@@ -206,31 +224,16 @@ const items = [
 function CarouselBanner() {
   const classes = useStyles();
   return (
-    <div>
+    <React.Fragment>
       <Carousel
-        className={classes.Banner}
+        className={classes.Example}
         autoPlay={false}
-        timer={3000}
+        timer={300}
         animation={'slide'}
         indicators={true}
         timeout={10}
         navButtonsAlwaysVisible={true}
         navButtonsAlwaysInVisible={false}
-        next={(now, previous) =>
-          console.log(
-            `Next User Callback: Now displaying child${now}. Previously displayed child${previous}`,
-          )
-        }
-        prev={(now, previous) =>
-          console.log(
-            `Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`,
-          )
-        }
-        onChange={(now, previous) =>
-          console.log(
-            `OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`,
-          )
-        }
       >
         {items.map((item, index) => {
           return (
@@ -242,7 +245,7 @@ function CarouselBanner() {
           );
         })}
       </Carousel>
-    </div>
+    </React.Fragment>
   );
 }
 

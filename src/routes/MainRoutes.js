@@ -19,31 +19,37 @@ const routeItems = [
     key: 'pesanan',
     path: '/pesanan',
     component: <Bookings />,
+    isBackgroundScroll: false,
   },
   {
     key: 'favorit',
     path: '/favorit',
     component: <Favorite />,
+    isBackgroundScroll: false,
   },
   {
     key: 'pentasku',
     path: '/pentasku',
     component: <MyShows />,
+    isBackgroundScroll: false,
   },
   {
     key: 'akun',
     path: '/akun',
     component: <Account />,
+    isBackgroundScroll: false,
   },
   {
     key: 'pengaturan',
     path: '/pengaturan',
     component: <Settings />,
+    isBackgroundScroll: false,
   },
   {
     key: 'home',
     path: '/',
     component: <Home />,
+    isBackgroundScroll: true,
   },
 ];
 
@@ -54,7 +60,6 @@ const LayoutMain: React.FC<{}> = (props) => {
     <React.Fragment>
       <ResponsiveDrawer />
       <main className={classes.content}>
-        <div className={classes.toolbar} />
         {props.children}
         <Footer />
       </main>
@@ -63,12 +68,25 @@ const LayoutMain: React.FC<{}> = (props) => {
 };
 
 export default function MainRoutes() {
+  const classes = useStyles();
+
+  const scrollHandler = (value) => {
+    if (value) {
+      return (
+        <React.Fragment>
+          <div className={classes.toolbar} />
+        </React.Fragment>
+      );
+    }
+  };
+
   return (
     <React.Fragment>
       <LayoutMain>
         <Switch>
           {routeItems.map((routeItem) => (
             <Route path={routeItem.path} key={routeItem.key}>
+              {scrollHandler(!routeItem.isBackgroundScroll)}
               {routeItem.component}
             </Route>
           ))}
