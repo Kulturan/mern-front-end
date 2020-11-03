@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Home, Register, Login, DetailPentas } from '../pages';
+import { Home, Register, Login, DetailPentas, Dashboard } from '../pages';
 import { Navbar, Footer } from '../components';
 
 const Routes = () => {
@@ -11,6 +11,8 @@ const Routes = () => {
       <Switch>
         <Route path='/pentas'>
           <DetailPentas />
+        <Route path='/dashboard'>
+          <Dashboard /
         </Route>
         <Route path='/register'>
           <Register />
