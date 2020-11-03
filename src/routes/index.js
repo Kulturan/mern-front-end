@@ -2,13 +2,16 @@ import React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Home, Register, Login } from '../pages';
+import { Home, Register, Login, DetailPentas } from '../pages';
 import { Navbar, Footer } from '../components';
 
 const Routes = () => {
   return (
     <Router>
       <Switch>
+        <Route path='/pentas'>
+          <DetailPentas />
+        </Route>
         <Route path='/register'>
           <Register />
         </Route>

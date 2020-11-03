@@ -27,7 +27,6 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto',
     h1: {
       fontWeight: 700,
     },
@@ -37,6 +36,20 @@ const theme = createMuiTheme({
     },
     h3: {
       fontWeight: 700,
+      color: '#fff',
+    },
+    h5: {
+      fontWeight: 700,
+      fontStyle: 'italic',
+      color: '#fff',
+    },
+    subtitle1: {
+      fontSize: '0.8rem',
+      color: '#bfbfbf',
+    },
+    body1: {
+      fontWeight: 400,
+      fontSize: '1rem',
       color: '#fff',
     },
     caption: {
