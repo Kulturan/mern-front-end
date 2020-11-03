@@ -1,7 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Home, Bookings, Favorite, MyShows, Account, Settings } from '../pages';
+import {
+  Home,
+  Bookings,
+  Favorite,
+  MyShows,
+  Account,
+  Settings,
+  DetailPentas,
+  Dashboard,
+} from '../pages';
 
 import { ResponsiveDrawer, Footer } from '../components';
 import { makeStyles } from '@material-ui/core/styles';
@@ -43,6 +52,18 @@ const routeItems = [
     key: 'pengaturan',
     path: '/pengaturan',
     component: <Settings />,
+    isBackgroundScroll: false,
+  },
+  {
+    key: 'detailPentas',
+    path: '/pentas',
+    component: <DetailPentas />,
+    isBackgroundScroll: false,
+  },
+  {
+    key: 'dashboard',
+    path: '/dashboard',
+    component: <Dashboard />,
     isBackgroundScroll: false,
   },
   {

@@ -10,7 +10,16 @@ const AuthRoute = {
 };
 const MainRoute = {
   key: 'main',
-  path: ['/', '/pesanan', '/favorit', '/pentasku', '/akun', '/pengaturan'],
+  path: [
+    '/',
+    '/pesanan',
+    '/favorit',
+    '/pentasku',
+    '/akun',
+    '/pengaturan',
+    '/pentas',
+    '/dashboard',
+  ],
 };
 
 const Routes = () => {

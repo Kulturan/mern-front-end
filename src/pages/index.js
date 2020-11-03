@@ -6,7 +6,6 @@ import Account from './Account';
 import Settings from './Settings';
 import Login from './Login';
 import Register from './Register';
-import Login from './Login';
 import DetailPentas from './DetailPentas';
 import Dashboard from './User/Dashboard';
 
@@ -19,6 +18,6 @@ export {
   Settings,
   Login,
   Register,
-  DetailPentas, 
+  DetailPentas,
   Dashboard,
 };

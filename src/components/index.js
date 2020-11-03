@@ -5,4 +5,11 @@ import CarouselBanner from './CarouselBanner';
 import AuthTextField from './AuthTextField';
 import UserPhoto from './UserPhotoCircle';
 
-export { Footer, ResponsiveDrawer, Searchbar, CarouselBanner, AuthTextField, UserPhoto };
+export {
+  Footer,
+  ResponsiveDrawer,
+  Searchbar,
+  CarouselBanner,
+  AuthTextField,
+  UserPhoto,
+};
