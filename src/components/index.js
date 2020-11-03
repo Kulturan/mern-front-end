@@ -1,8 +1,8 @@
 import Footer from './Footer';
-import Navbar from './Navbar';
+import ResponsiveDrawer from './ResponsiveDrawer';
 import Searchbar from './Searchbar';
-import ImageGridList from './ImageGridList';
+import CarouselBanner from './CarouselBanner';
 import AuthTextField from './AuthTextField';
 import UserPhoto from './UserPhotoCircle';
 
-export { Footer, Navbar, Searchbar, ImageGridList, AuthTextField, UserPhoto };
+export { Footer, ResponsiveDrawer, Searchbar, CarouselBanner, AuthTextField, UserPhoto };

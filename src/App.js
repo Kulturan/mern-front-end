@@ -3,6 +3,13 @@ import React from 'react';
 import Routes from './routes';
 
 import './App.scss';
+import {
+  createMuiTheme,
+  ThemeProvider,
+  makeStyles,
+} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -18,15 +25,18 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#222b31',
+      light: '#ff4874',
+      main: '#ff3465',
+      dark: '#e52e5a',
       contrastText: '#fff',
     },
     secondary: {
-      main: '#ff3465',
+      main: '#222b31',
       contrastText: '#fff',
     },
   },
   typography: {
+    fontFamily: 'Roboto',
     h1: {
       fontWeight: 700,
     },
@@ -58,13 +68,22 @@ const theme = createMuiTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
-    <React.Fragment>
+    <div className={classes.root}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Routes />
       </ThemeProvider>
-    </React.Fragment>
+    </div>
   );
 }
 

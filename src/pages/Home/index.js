@@ -1,27 +1,15 @@
 import React from 'react';
 
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Container from '@material-ui/core/Container';
 
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import PlaceIcon from '@material-ui/icons/Place';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
-import {
-  Searchbar as CustomizedInputBase,
-  ImageGridList,
-} from '../../components';
+import { CarouselBanner } from '../../components';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -45,104 +33,106 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    borderRadius: '10px',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    height: '100%',
   },
   cardContent: {
     flexGrow: 1,
   },
+  horizontalCard: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.default,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  gridListTile: {
+    borderRadius: theme.spacing(1),
+  },
+  gridListItem: {
+    display: 'block',
+    position: 'relative',
+  },
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+  wrapIcon: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cardItems = [
+  {
+    title: 'Title1',
+    description: 'desc1',
+    image: 'https://source.unsplash.com/random',
+  },
+  {
+    title: 'Title2',
+    description: 'desc2',
+    image: 'https://source.unsplash.com/random',
+  },
+  {
+    title: 'Title3',
+    description: 'desc3',
+    image: 'https://source.unsplash.com/random',
+  },
+  {
+    title: 'Title4',
+    description: 'desc4',
+    image: 'https://source.unsplash.com/random',
+  },
+  {
+    title: 'Title5',
+    description: 'desc5',
+    image: 'https://source.unsplash.com/random',
+  },
+  {
+    title: 'Title6',
+    description: 'desc6',
+    image: 'https://source.unsplash.com/random',
+  },
+];
 
 export default function Home() {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth='sm'>
-            <Typography
-              component='h1'
-              variant='h2'
-              align='center'
-              color='textPrimary'
-              gutterBottom
-            >
-              Trind
-            </Typography>
-            <Typography
-              variant='h5'
-              align='center'
-              color='textSecondary'
-              paragraph
-            >
-              Cari wisata menarik yang ada di sekitarmu!
-            </Typography>
-            <CustomizedInputBase />
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify='center'>
-                <Grid item>
-                  <Button variant='contained' color='primary'>
-                    kunjungi
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant='outlined' color='primary'>
-                    lihat selengkapnya
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
-        {/* End hero unit */}
-        <Container className={classes.cardGrid} maxWidth='md'>
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image='https://source.unsplash.com/random'
-                    title='Image title'
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant='h5' component='h2'>
-                      Warung J-One
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      fontSize='small'
-                      variant='subtitle'
-                    >
-                      <PlaceIcon fontSize='inherit' />
-                      Perumdos ITS, Blok J No.1, Keputih Kota Surabaya, Jawa
-                      Timur
-                    </Typography>
-                  </CardContent>
-                  <Divider orientation='horizontal' />
-                  <CardActions>
-                    <IconButton aria-label='tambahkan ke favorit'>
-                      <FavoriteIcon fontSize='small' />
-                    </IconButton>
-                    <IconButton aria-label='bagikan'>
-                      <ShareIcon fontSize='small' />
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </Grid>
+      <CarouselBanner />
+      <Container>
+        <Typography variant='h5' className={classes.wrapIcon}>
+          <WhatshotIcon />
+          Trending
+        </Typography>
+        <div className={classes.horizontalCard}>
+          <GridList className={classes.gridList} cols={3}>
+            {cardItems.map((item) => (
+              <GridListTile
+                classes={{ tile: classes.gridListTile }}
+                key={item.title}
+              >
+                <img src={item.image} alt={item.title} />
+                <Typography variant='h6'>{item.title}</Typography>
+              </GridListTile>
             ))}
-          </Grid>
-        </Container>
-        <Container maxWidth='md'>
-          <ImageGridList />
-        </Container>
-      </main>
+          </GridList>
+        </div>
+      </Container>
     </React.Fragment>
   );
 }
