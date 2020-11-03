@@ -11,8 +11,9 @@ const Routes = () => {
       <Switch>
         <Route path='/pentas'>
           <DetailPentas />
+        </Route>
         <Route path='/dashboard'>
-          <Dashboard /
+          <Dashboard />
         </Route>
         <Route path='/register'>
           <Register />
