@@ -9,22 +9,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FaceIcon from '@material-ui/icons/Face';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import PersonIcon from '@material-ui/icons/Person';
-import SettingsIcon from '@material-ui/icons/Settings';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 import { Link as LinkRouter } from 'react-router-dom';
@@ -32,42 +22,11 @@ import { Link as LinkRouter } from 'react-router-dom';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-const drawerWidth = 200;
-const navMenus = [
-  {
-    title: 'Beranda',
-    link: '/',
-    icon: <HomeIcon />,
-  },
-  {
-    title: 'Pesanan',
-    link: '/pesanan',
-    icon: <FormatListBulletedIcon />,
-  },
-  {
-    title: 'Favorit',
-    link: '/favorit',
-    icon: <FavoriteIcon />,
-  },
-  {
-    title: 'Pentasku',
-    link: '/pentasku',
-    icon: <FaceIcon />,
-  },
-];
+import Logo from '../assets/image/logo.png';
 
-const navAccount = [
-  {
-    title: 'Akun',
-    link: '/akun',
-    icon: <PersonIcon />,
-  },
-  {
-    title: 'Pengaturan',
-    link: '/pengaturan',
-    icon: <SettingsIcon />,
-  },
-];
+import { navMenus, navAccount, mobileMenus } from '../data/drawerMenu';
+
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth + theme.spacing(4)}px)`,
       marginLeft: drawerWidth + theme.spacing(4),
     },
+  },
+  brandLogo: {
+    padding: theme.spacing(2),
+    objectFit: 'contain',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -239,8 +202,11 @@ function ResponsiveDrawer(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {mobileMenus[2].child.map((menu) => (
+        <MenuItem key={menu.title} onClick={handleMenuClose}>
+          {menu.title}
+        </MenuItem>
+      ))}
     </Menu>
   );
 
@@ -255,39 +221,36 @@ function ResponsiveDrawer(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label='account of current user'
-          aria-controls='primary-search-account-menu'
-          aria-haspopup='true'
-          color='inherit'
+      {mobileMenus.map((mobileMenu, index) => (
+        <MenuItem
+          key={mobileMenu.title}
+          onClick={mobileMenu.title === 'Profil' ? handleProfileMenuOpen : null}
         >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+          <IconButton
+            aria-label={mobileMenu.ariaLabel}
+            aria-controls={mobileMenu.ariaControls}
+            aria-haspopup={mobileMenu.ariaHaspopup}
+            color='inherit'
+          >
+            <Badge badgeContent={mobileMenu.badgeContent} color='secondary'>
+              {mobileMenu.icon}
+            </Badge>
+          </IconButton>
+          <p>{mobileMenu.title}</p>
+        </MenuItem>
+      ))}
     </Menu>
   );
 
   const drawer = (
     <React.Fragment>
       <div className={classes.toolbar} />
+      <img
+        src={Logo}
+        alt='kulturan-logo'
+        className={classes.brandLogo}
+        height='60'
+      />
       <Divider />
       <List dense={true} className={classes.customList}>
         {navMenus.map((navItem, index) => (
@@ -350,9 +313,6 @@ function ResponsiveDrawer(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant='h6' noWrap>
-              Sendria
-            </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -368,29 +328,25 @@ function ResponsiveDrawer(props) {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label='show 4 new mails' color='inherit'>
-                <Badge badgeContent={4} color='secondary'>
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-label='show 17 new notifications'
-                color='inherit'
-              >
-                <Badge badgeContent={17} color='secondary'>
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                edge='end'
-                aria-label='account of current user'
-                aria-controls={menuId}
-                aria-haspopup='true'
-                onClick={handleProfileMenuOpen}
-                color='inherit'
-              >
-                <AccountCircle />
-              </IconButton>
+              {mobileMenus.map((mobileMenu, index) => (
+                <IconButton
+                  key={mobileMenu.title}
+                  aria-label={mobileMenu.ariaLabel}
+                  aria-controls={mobileMenu.ariaControls}
+                  aria-haspopup={mobileMenu.ariaHaspopup}
+                  color='inherit'
+                  onClick={
+                    mobileMenu.title === 'Profil' ? handleProfileMenuOpen : null
+                  }
+                >
+                  <Badge
+                    badgeContent={mobileMenu.badgeContent}
+                    color='secondary'
+                  >
+                    {mobileMenu.icon}
+                  </Badge>
+                </IconButton>
+              ))}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

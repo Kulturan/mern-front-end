@@ -9,9 +9,17 @@ import {
   makeStyles,
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import purple from '@material-ui/core/colors/purple';
 
 const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+    },
+  },
   palette: {
     type: 'dark',
     primary: {
@@ -21,10 +29,12 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: purple[500],
+      main: '#ff3465',
+      contrastText: '#fff',
     },
   },
   typography: {
+    fontFamily: 'Roboto',
     h1: {
       fontWeight: 700,
     },

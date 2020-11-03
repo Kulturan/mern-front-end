@@ -33,8 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
     '& $Content': {
       color: theme.palette.common.white,
-      backgroundImage:
-        'linear-gradient(to right, rgba(0,0,0, 0.9) , transparent);',
+      backgroundImage: 'linear-gradient(to right, rgb(0,0,0) , transparent);',
       height: '100%',
       width: '100%',
       cursor: 'pointer',
