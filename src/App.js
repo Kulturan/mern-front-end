@@ -10,6 +10,8 @@ import {
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 const theme = createMuiTheme({
   breakpoints: {
     values: {
@@ -29,7 +31,7 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#ff3465',
+      main: '#222b31',
       contrastText: '#fff',
     },
   },
@@ -44,6 +46,20 @@ const theme = createMuiTheme({
     },
     h3: {
       fontWeight: 700,
+      color: '#fff',
+    },
+    h5: {
+      fontWeight: 700,
+      fontStyle: 'italic',
+      color: '#fff',
+    },
+    subtitle1: {
+      fontSize: '0.8rem',
+      color: '#bfbfbf',
+    },
+    body1: {
+      fontWeight: 400,
+      fontSize: '1rem',
       color: '#fff',
     },
     caption: {
