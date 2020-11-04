@@ -10,6 +10,7 @@ import Logo from '../../assets/image/logo.png';
 const useStyles = makeStyles((theme) => ({
   body: {
     minHeight: '100vh',
+    width: '100%',
     background: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -61,7 +62,7 @@ export default function Register() {
             <AuthTextField label='Password' type='password' />
             <Button
               variant='contained'
-              color='secondary'
+              color='primary'
               fullWidth
               style={{ fontFamily: 'Roboto', fontWeight: 700, marginBottom: 8 }}
             >

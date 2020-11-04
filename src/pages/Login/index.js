@@ -3,14 +3,14 @@ import React from 'react';
 import { Typography, Button, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { AuthTextField } from '../../components';
+import { AuthTextField, GoogleButton } from '../../components';
 import Background from '../../assets/image/auth.png';
-import GoogleIcon from '../../assets/icon/google-icon.png';
 import Logo from '../../assets/image/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   body: {
     minHeight: '100vh',
+    width: '100%',
     background: `url(${Background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -33,24 +33,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       paddingTop: theme.spacing(12),
       margin: theme.spacing(0, 16),
+      maxWidth: '400px',
     },
-    maxWidth: '400px',
   },
   footer: {
     marginTop: theme.spacing(10),
-  },
-  googleButton: {
-    justifyContent: 'start',
-    padding: theme.spacing(1, 2),
-    marginBottom: theme.spacing(1),
-    color: '#000',
-    backgroundColor: '#fff',
-    textTransform: 'none',
-    fontFamily: 'Roboto',
-    fontWeight: 700,
-    '&:hover': {
-      backgroundColor: '#777',
-    },
   },
   header: {
     // Mobile
@@ -62,15 +49,8 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(10),
     },
   },
-  logo: {
-    // Mobile
-    [theme.breakpoints.up('xs')]: {
-      marginRight: theme.spacing(5),
-    },
-    // Laptop
-    [theme.breakpoints.up('md')]: {
-      marginRight: theme.spacing(10),
-    },
+  textField: {
+    marginBottom: theme.spacing(3),
   },
   orText: {
     margin: theme.spacing(2, 0),
@@ -90,11 +70,19 @@ export default function Login() {
         </header>
         <main>
           <form>
-            <AuthTextField label='Email' type='email' />
-            <AuthTextField label='Password' type='password' />
+            <AuthTextField
+              label='Email'
+              type='email'
+              className={classes.textField}
+            />
+            <AuthTextField
+              label='Password'
+              type='password'
+              className={classes.textField}
+            />
             <Button
               variant='contained'
-              color='secondary'
+              color='primary'
               fullWidth
               style={{ fontFamily: 'Roboto', fontWeight: 700 }}
             >
@@ -109,25 +97,7 @@ export default function Login() {
           >
             atau
           </Typography>
-          {/* Google button */}
-          <Button
-            variant='contained'
-            color='secondary'
-            type='submit'
-            className={classes.googleButton}
-            size='large'
-            fullWidth
-          >
-            <img
-              src={GoogleIcon}
-              alt='google-logo'
-              height='22'
-              width='22'
-              className={classes.logo}
-            />
-            Daftar dengan Google
-          </Button>
-          {/* End google button */}
+          <GoogleButton />
           <Typography variant='caption' component='p' align='center'>
             Belum punya akun?{' '}
             <Link href='/register' color='inherit'>
