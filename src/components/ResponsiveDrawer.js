@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '30px',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
+    marginBottom: theme.spacing(1),
 
     '&$selected': {
       background: theme.palette.primary.main,

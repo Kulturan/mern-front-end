@@ -1,137 +1,92 @@
-import {
-  Grid,
-  createMuiTheme,
-  Typography,
-  ThemeProvider,
-  Input,
-} from '@material-ui/core';
 import React from 'react';
+
+import { Grid, TextField, Typography, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import SaveIcon from '@material-ui/icons/Save';
+
 import { UserPhoto } from '../../../components';
-import './style.css';
 
-class Dashboard extends React.Component {
-  constructor() {
-    super();
-    this.user = {
-      name: 'Amrizkuy',
-      email: 'Amrizkuy@gmail.com',
-      tLahir: '2 Juni 2001',
-      domisili: 'Bojonegoro',
-    };
-    this.theme = createMuiTheme({
-      typography: {
-        h1: {
-          fontFamily: 'Roboto',
-          fontSize: '3.07rem',
-          fontWeight: '500',
-        },
-        body1: {
-          fontFamily: 'Raleway',
-          fontWeight: 500,
-          fontSize: '1.563rem',
-          color: 'rgba(155,155,155,1)',
-        },
-        body2: {
-          fontFamily: 'Raleway',
-          fontWeight: 500,
-          fontSize: '1.563rem',
-          color: 'rgba(255,255,255,1)',
-        },
-        body4: {
-          fontFamily: 'Raleway',
-          fontWeight: 500,
-          fontSize: '1.563rem',
-          color: 'rgba(255,255,255,1)',
-        },
-      },
-      inputStyles: {
-        width: '9000px',
-      },
-    });
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <main>
-          <ThemeProvider theme={this.theme}>
-            <Grid
-              container
-              direction='row'
-              justify='center'
-              alignItems='center'
-              spacing={1}
+const userData = [
+  { label: 'Nama', type: 'text', defaultValue: 'Muhammad Rizqi Tsani' },
+  { label: 'Email', type: 'email', defaultValue: 'rizqitsani@gmail.com' },
+  { label: 'Password', type: 'password', defaultValue: '123456' },
+];
+
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    // Mobile
+    [theme.breakpoints.down('md')]: {
+      marginBottom: theme.spacing(4),
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  container: {
+    // Mobile
+    [theme.breakpoints.up('xs')]: {
+      padding: theme.spacing(4),
+    },
+    // Laptop
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(6, 8),
+    },
+  },
+  header: {
+    marginBottom: theme.spacing(2),
+  },
+  textField: {
+    margin: theme.spacing(1.5, 0),
+  },
+  saveButton: {
+    marginTop: theme.spacing(3),
+    // Mobile
+    [theme.breakpoints.up('xs')]: {
+      width: '100%',
+    },
+    // Laptop
+    [theme.breakpoints.up('md')]: {
+      width: 150,
+    },
+  },
+}));
+
+export default function Dashboard() {
+  const classes = useStyles();
+
+  return (
+    <React.Fragment>
+      <Grid container className={classes.container}>
+        <Grid item lg={3} className={classes.avatar}>
+          <UserPhoto />
+        </Grid>
+        <Grid item lg>
+          <Typography variant='h4' component='h1' className={classes.header}>
+            Pengaturan Akun
+          </Typography>
+          <form>
+            {userData.map((data, index) => (
+              <TextField
+                key={index}
+                label={data.label}
+                type={data.type}
+                defaultValue={data.defaultValue}
+                className={classes.textField}
+                fullWidth
+              />
+            ))}
+            <Button
+              variant='contained'
+              color='primary'
+              size='large'
+              startIcon={<SaveIcon />}
+              className={classes.saveButton}
             >
-              <Grid item xl={3}>
-                <UserPhoto size='247px' />
-              </Grid>
-              <Grid item xl={5}>
-                <Typography component='h1' variant='h1' align='center'>
-                  Tinjauan Akun
-                </Typography>
-                <form>
-                  <table>
-                    <tr>
-                      <td>
-                        <label htmlFor={'user-name'}>
-                          <Typography variant='body4' color='initial'>
-                            Nama
-                          </Typography>
-                        </label>
-                      </td>
-                      <td>
-                        <Input
-                          id={'user-name'}
-                          value={this.user.name}
-                          disabled
-                        ></Input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label htmlFor={'user-email'}>Email</label>
-                      </td>
-                      <td>
-                        <Input
-                          id={'user-email'}
-                          value={this.user.email}
-                          type={'email'}
-                          disabled
-                        ></Input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label htmlFor={'user-birth-place'}>Tempat Lahir</label>
-                      </td>
-                      <td>
-                        <Input
-                          id={'user-birth-place'}
-                          value={this.user.tLahir}
-                          disabled
-                        ></Input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label htmlFor={'user-place'}>Domisili</label>
-                      </td>
-                      <td>
-                        <Input
-                          id={'user-place'}
-                          value={this.user.domisili}
-                          disabled
-                        ></Input>
-                      </td>
-                    </tr>
-                  </table>
-                </form>
-              </Grid>
-            </Grid>
-          </ThemeProvider>
-        </main>
-      </React.Fragment>
-    );
-  }
+              Save
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  );
 }
-
-export default Dashboard;
