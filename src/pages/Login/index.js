@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(10),
     },
   },
-  textField: {
-    marginBottom: theme.spacing(3),
-  },
   orText: {
     margin: theme.spacing(2, 0),
   },
@@ -70,16 +67,8 @@ export default function Login() {
         </header>
         <main>
           <form>
-            <AuthTextField
-              label='Email'
-              type='email'
-              className={classes.textField}
-            />
-            <AuthTextField
-              label='Password'
-              type='password'
-              className={classes.textField}
-            />
+            <AuthTextField label='Email' type='email' />
+            <AuthTextField label='Password' type='password' />
             <Button
               variant='contained'
               color='primary'
