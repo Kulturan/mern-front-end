@@ -12,13 +12,12 @@ const MainRoute = {
   key: 'main',
   path: [
     '/',
-    '/pesanan',
+    '/keranjang',
     '/favorit',
     '/pentasku',
     '/akun',
     '/pengaturan',
-    '/pentas',
-    '/dashboard',
+    '/pentas/:id',
   ],
 };
 

@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SaveIcon from '@material-ui/icons/Save';
 
-import { UserPhoto } from '../../../components';
+import { UserPhoto } from '../../components';
 
 const userData = [
   { label: 'Nama', type: 'text', defaultValue: 'Muhammad Rizqi Tsani' },

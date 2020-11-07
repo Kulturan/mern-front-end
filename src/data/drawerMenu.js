@@ -1,12 +1,12 @@
 import HomeIcon from '@material-ui/icons/Home';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FaceIcon from '@material-ui/icons/Face';
-import PersonIcon from '@material-ui/icons/Person';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const navMenus = [
   {
@@ -15,9 +15,9 @@ const navMenus = [
     icon: <HomeIcon />,
   },
   {
-    title: 'Pesanan',
-    link: '/pesanan',
-    icon: <FormatListBulletedIcon />,
+    title: 'Keranjang',
+    link: '/keranjang',
+    icon: <ShoppingCartIcon />,
   },
   {
     title: 'Favorit',
@@ -33,14 +33,14 @@ const navMenus = [
 
 const navAccount = [
   {
-    title: 'Akun',
-    link: '/akun',
-    icon: <PersonIcon />,
-  },
-  {
     title: 'Pengaturan',
     link: '/pengaturan',
     icon: <SettingsIcon />,
+  },
+  {
+    title: 'Keluar',
+    link: '/login',
+    icon: <ExitToAppOutlinedIcon />,
   },
 ];
 

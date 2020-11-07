@@ -3,13 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import {
   Home,
-  Bookings,
+  Cart,
   Favorite,
   MyShows,
   Account,
   Settings,
   DetailPentas,
-  Dashboard,
 } from '../pages';
 
 import { ResponsiveDrawer, Footer } from '../components';
@@ -25,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 const routeItems = [
   {
-    key: 'pesanan',
-    path: '/pesanan',
-    component: <Bookings />,
+    key: 'keranjang',
+    path: '/keranjang',
+    component: <Cart />,
     isBackgroundScroll: false,
   },
   {
@@ -56,14 +55,8 @@ const routeItems = [
   },
   {
     key: 'detailPentas',
-    path: '/pentas',
+    path: '/pentas/:id',
     component: <DetailPentas />,
-    isBackgroundScroll: false,
-  },
-  {
-    key: 'dashboard',
-    path: '/dashboard',
-    component: <Dashboard />,
     isBackgroundScroll: false,
   },
   {

@@ -1,9 +1,7 @@
 import React from 'react';
 
+import Account from './Account';
+
 export default function Settings() {
-  return (
-    <React.Fragment>
-      <h1>Settings</h1>
-    </React.Fragment>
-  );
+  return <Account />;
 }

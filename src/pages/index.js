@@ -1,5 +1,5 @@
 import Home from './Home';
-import Bookings from './Bookings';
+import Cart from './Cart';
 import Favorite from './Favorite';
 import MyShows from './MyShows';
 import Account from './Account';
@@ -7,11 +7,10 @@ import Settings from './Settings';
 import Login from './Login';
 import Register from './Register';
 import DetailPentas from './DetailPentas';
-import Dashboard from './User/Dashboard';
 
 export {
   Home,
-  Bookings,
+  Cart,
   Favorite,
   MyShows,
   Account,
@@ -19,5 +18,4 @@ export {
   Login,
   Register,
   DetailPentas,
-  Dashboard,
 };
